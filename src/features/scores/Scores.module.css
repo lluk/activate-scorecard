@@ -1,0 +1,111 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.value {
+  font-size: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 2px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.player {
+  display: table-row;
+}
+
+.playerInfo {
+  display: table-cell;
+}
+
+.room {
+  display: table-cell;
+  border: 1px solid #333;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.games {
+  display: table-row;
+}
+
+.game {
+  display: table-cell;
+  border: 1px solid #666;
+  border-collapse: collapse;
+  white-space: nowrap;
+  font-size: 14px;
+  min-width: 40px;
+}
+
+.game:first-child {
+  border-left: none;
+}
+
+.game:last-child {
+  border-right: none;
+}
+
+.gamenamewrapper {
+  height: 110px;
+  position: relative;
+}
+
+.gamename {
+  position: absolute;
+  transform: rotate(-90deg);
+  transform-origin: bottom left;
+  bottom: 10px;
+  left: 70%;
+ }
+
+.level {
+  border-top: 1px solid #999;
+  font-size: 12px;
+}
+
+.range0 {
+  background-color: hsl(200, 80%, 85%);
+}
+
+.range1 {
+  background-color: hsl(120, 80%, 85%);
+}
+
+.range2 {
+  background-color: hsl(90, 80%, 85%);
+}
+
+.range3 {
+  background-color: hsl(90, 80%, 85%);
+}
+
+.range4 {
+  background-color: hsl(75, 80%, 85%);
+}
+
+.range5 {
+  background-color: hsl(60, 80%, 85%);
+}
+
+.range6 {
+  background-color: hsl(45, 80%, 85%);
+}
+
+.range7 {
+  background-color: hsl(30, 80%, 85%);
+}
+
+.range8 {
+  background-color: hsl(15, 80%, 85%);
+}
+
+.range9 {
+  background-color: hsl(0, 80%, 85%);
+}
