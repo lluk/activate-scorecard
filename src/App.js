@@ -1,13 +1,13 @@
 import React from 'react';
 // import logo from './logo.svg';
-import { Scores } from './features/scores/Scores';
+import { Players } from './features/scores/Players';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Scores />
+        <Players />
       </header>
     </div>
   );

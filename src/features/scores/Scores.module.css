@@ -24,11 +24,17 @@
   display: table-cell;
 }
 
+.playerContent {
+  display: table-cell;
+  width: 1120px;
+}
+
 .room {
   display: table-cell;
   border: 1px solid #333;
   border-collapse: collapse;
   font-size: 14px;
+  white-space: nowrap;
 }
 
 .games {
@@ -39,8 +45,6 @@
   display: table-cell;
   border: 1px solid #666;
   border-collapse: collapse;
-  white-space: nowrap;
-  font-size: 14px;
   min-width: 40px;
 }
 
@@ -53,7 +57,7 @@
 }
 
 .gamenamewrapper {
-  height: 110px;
+  height: 70px;
   position: relative;
 }
 
@@ -62,7 +66,16 @@
   transform: rotate(-90deg);
   transform-origin: bottom left;
   bottom: 10px;
-  left: 70%;
+  font-size: 13px;
+  white-space: normal;
+  padding: 5px;
+  width:60px;
+  height: 30px;
+  left: 40px;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
  }
 
 .level {
