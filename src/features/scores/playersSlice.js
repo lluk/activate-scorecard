@@ -40,31 +40,33 @@ export function fetchPlayer(name) {
     // that the API call is starting.
     dispatch(requestPlayer(name))
 
-    let json = getPlayerData(name);
-
-    let playerData = json.data.player;
-    dispatch(loadPlayer(playerData));
-
-    let locationData = json.data.location;
-    let badgeData = locationData.badges;
-    dispatch(loadBadges(badgeData));
-
-    let roomData = locationData.rooms;
-    dispatch(loadRooms(roomData));
-
-    let gameData = roomData.games;
-    dispatch(loadGames(gameData));
-
-    // return fetch(proxyurl + `https://scores.activate.ca/api/player/${name}`,
-    // {
-    //   method: 'GET',
-    //   headers: { 
-    //     'Content-Type': 'text/plain'
-    //   }
+    // return fetch(`http://localhost:8080/api/${name}`)
+    // .then(response => response.json())
+    // .then(json => {
+    //   loadPlayerData(dispatch, json);
     // })
-    //   .then(response => response.json())
-    //   .then(json => dispatch(recievePlayer(name, json)))
+
+    let json = getPlayerData(name);
+    if(!json) return;
+    loadPlayerData(dispatch, json);
+
   }
+}
+
+function loadPlayerData(dispatch, json) {
+  let playerData = json.data.player;
+  dispatch(loadPlayer(playerData));
+
+  let locationData = json.data.location;
+  
+  let badgeData = locationData.badges;
+  dispatch(loadBadges(badgeData));
+
+  let roomData = locationData.rooms;
+  dispatch(loadRooms(roomData));
+
+  let gameData = roomData.games;
+  dispatch(loadGames(gameData));
 }
 
 // The function below is called a selector and allows us to select a value from

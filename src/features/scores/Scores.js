@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { 
+  // useState 
+} from 'react';
+import { 
+  useSelector, 
+  // useDispatch 
+} from 'react-redux';
 import {
   selectPlayers
 } from './playersSlice';
@@ -9,13 +14,13 @@ import {
 import styles from './Scores.module.css';
 import { 
   selectRooms, 
-  selectGames, 
-  selectLevels 
+  // selectGames, 
+  // selectLevels 
 } from './roomsSlice';
 
 export function Scores() {
   const players = useSelector(selectPlayers);
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   //const [incrementAmount, setIncrementAmount] = useState('2');
 
   return (
@@ -47,22 +52,14 @@ export function Player(props) {
 
 export function Rooms(props) {
   const rooms = useSelector(selectRooms);
-  const levels = useSelector(selectLevels);
-
   return (
     <div className={styles.rooms}>
       {map(rooms, (item, i) => <Room room={item} scores={props.scores} key={i} />)}
     </div>
   )
-
-  // return (
-  // <div>{game.name} [{playerScore.level_id}] Score:{playerScore.score}</div>
-  // );
 }
 
 export function Room(props) {
-  const games = useSelector(selectGames);
-
   return (
     <div className={styles.room}>
       {props.room.name}
@@ -118,21 +115,9 @@ export function Level(props) {
     }
   }
 
-  var style = "";
-  if(player_score != "-")
+  if(player_score !== "-")
   {
-    switch(diff) {
-      case 0: style = styles.range0; break;
-      case 1: style = styles.range1; break;
-      case 2: style = styles.range2; break;
-      case 3: style = styles.range3; break;
-      case 4: style = styles.range4; break;
-      case 5: style = styles.range5; break;
-      case 6: style = styles.range6; break;
-      case 7: style = styles.range7; break;
-      case 8: style = styles.range8; break;
-      default: style = styles.range9; break;
-    }
+    var style = styles[`range${diff > 9 ? 9 : diff}`];
   }
 
   return (

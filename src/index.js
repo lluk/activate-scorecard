@@ -13,6 +13,10 @@ store.dispatch(fetchPlayer("LaserBoots"))
 store.dispatch(fetchPlayer("taisapan"))
 store.dispatch(fetchPlayer("KiloRomeoHotel"))
 store.dispatch(fetchPlayer("SadPandaEh"))
+store.dispatch(fetchPlayer("DoWhileTrue"))
+store.dispatch(fetchPlayer("Zorbak"))
+
+
 
 
 ReactDOM.render(
