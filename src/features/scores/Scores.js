@@ -55,8 +55,6 @@ export function Level(props) {
   let player_score = 0;
   let diff = 9999;
 
-  // console.log(props.levels[props.level_id])
-
   if(!props.levels[props.level_id]){
     player_score = "-";
   }
