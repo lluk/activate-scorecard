@@ -29,4 +29,4 @@ app.get('/api/:player', (request, response) => {
     });
 })
 
-app.listen(8080)
+app.listen(process.env.PORT || 8080)
