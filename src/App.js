@@ -46,7 +46,6 @@ class PlayersInput extends React.Component {
     var players = this.state.input.split(",");
     for(let i=0; i < players.length; i++) {
       let player = players[i];
-      console.log(player);
       player = player.trim();
       store.dispatch(fetchPlayer(player));
     }

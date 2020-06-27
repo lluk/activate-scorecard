@@ -49,7 +49,7 @@ export function fetchPlayer(name) {
     //   return;
     // }
 
-    return fetch(`http://localhost:8080/api/${name}`)
+    return fetch(`/api/${name}`)
     .then(response => response.json())
     .then(json => {
       loadPlayerData(dispatch, json);
