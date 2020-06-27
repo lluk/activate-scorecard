@@ -1,28 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getPlayerData } from '../../scores/playerData'
 import { loadBadges } from './badgesSlice'
-import { loadGames } from './gamesSlice';
 import { loadRooms } from './roomsSlice';
 
 export const playerSlice = createSlice({
   name: 'players',
-  initialState: [],
+  initialState: {},
   reducers: {
     requestPlayer: (state, action) => {
+      let key = action.payload.toLowerCase();
+      state[key] = { "player_name": action.payload, "isLoading": true };
     },
     loadPlayer: (state, action) => {
-      state.push(action.payload);
+      let key = action.payload.player_name.toLowerCase();
+      delete state[key];
+      state[key] = action.payload;
     },
-    removePlayer: (state, action) => {
-      state.push(action.payload);
-    },
-    refreshPlayers: (state, action) => {
-      state.push(action.payload);
+    clearPlayers: (state, action) => {
+      let keys = Object.keys(state);
+      for (let i = 0; i < keys.length; i++) {
+        delete state[keys[i]];
+      }
     },
   },
 });
 
-export const { requestPlayer, loadPlayer, removePlayer, refreshPlayers } = playerSlice.actions;
+export const { requestPlayer, loadPlayer, clearPlayers } = playerSlice.actions;
 
 // // The function below is called a thunk and allows us to perform async logic. It
 // // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
@@ -39,17 +42,18 @@ export function fetchPlayer(name) {
     // First dispatch: the app state is updated to inform
     // that the API call is starting.
     dispatch(requestPlayer(name))
-
-    // return fetch(`http://localhost:8080/api/${name}`)
-    // .then(response => response.json())
-    // .then(json => {
-    //   loadPlayerData(dispatch, json);
-    // })
-
     let json = getPlayerData(name);
-    if(!json) return;
-    loadPlayerData(dispatch, json);
 
+    // if(json) {
+    //   loadPlayerData(dispatch, json);
+    //   return;
+    // }
+
+    return fetch(`http://localhost:8080/api/${name}`)
+    .then(response => response.json())
+    .then(json => {
+      loadPlayerData(dispatch, json);
+    })
   }
 }
 
@@ -57,16 +61,11 @@ function loadPlayerData(dispatch, json) {
   let playerData = json.data.player;
   dispatch(loadPlayer(playerData));
 
-  let locationData = json.data.location;
-  
-  let badgeData = locationData.badges;
+  let badgeData = json.data.location.badges;
   dispatch(loadBadges(badgeData));
 
-  let roomData = locationData.rooms;
+  let roomData = json.data.location.rooms;
   dispatch(loadRooms(roomData));
-
-  let gameData = roomData.games;
-  dispatch(loadGames(gameData));
 }
 
 // The function below is called a selector and allows us to select a value from

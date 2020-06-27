@@ -24,19 +24,21 @@ export function getBadges(badges, player_badges, medal) {
     player_badges={player_badges} 
     key={i} 
   />, 
-  (item) => item.medal == medal);
+  (item) => item.medal === medal);
 }
 
 export function Badge(props) {
   let badge = props.badge;
   let playerBadge = props.player_badges[badge.id];
 
+  let progress = (playerBadge ? playerBadge.progress : 0);
+
   let medalStyle = styles['badge-'+badge.medal];
-  let completionStyle = styles['badge-'+(playerBadge.status === "1" ? "complete" : "incomplete")];
+  let completionStyle = styles['badge-'+(playerBadge && playerBadge.status === "1" ? "complete" : "incomplete")];
 
   return (
     <div className={[styles.badge, medalStyle, completionStyle ].join(' ')}>
-      <div><label title={`${badge.description} [${playerBadge.progress}/${badge.total_progress}]`}>{badge.name}</label></div>
+      <div><label title={`${badge.description} [${progress}/${badge.total_progress}]`}>{badge.name}</label></div>
     </div>
   )
 }

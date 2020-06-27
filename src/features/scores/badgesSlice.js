@@ -5,9 +5,12 @@ export const badgesSlice = createSlice({
   initialState: {},
   reducers: {
     loadBadges: (state, action) => {
-      for(var key in action.payload)
+      if(Object.keys(state).length === 0)
       {
-        state[key] = action.payload[key];
+        for(var key in action.payload)
+        {
+          state[key] = action.payload[key];
+        }
       }
     }
   },

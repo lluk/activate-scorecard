@@ -1,15 +1,9 @@
 import React from 'react';
 import map from '../../app/map';
-import { 
-  useSelector, 
-  // useDispatch 
-} from 'react-redux';
+import { useSelector } from 'react-redux';
+import { selectRooms } from './roomsSlice';
 import styles from './Scores.module.css';
-import { 
-  selectRooms, 
-  // selectGames, 
-  // selectLevels 
-} from './roomsSlice';
+
 
 export default function Scores(props) {
   const rooms = useSelector(selectRooms);
@@ -25,7 +19,7 @@ export function Room(props) {
     <div className={styles.room}>
       {props.room.name}
       <div className={styles.games}>
-      {map(props.room.games, (item, i) => <Game game={item} scores={props.scores[item.id]} key={i} />)}
+        {map(props.room.games, (item, i) => <Game game={item} scores={props.scores[item.id]} key={i} />)}
       </div>
     </div>
   );

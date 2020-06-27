@@ -16,15 +16,51 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
-.player {
+.scorecards {
+  display: flex;
+  flex-direction: column;
+}
+
+.scorecard {
+  margin: 10px auto;
   display: table-row;
+  border: 2px solid black;
 }
 
 .playerInfo {
   display: table-cell;
+  position: relative;
+  min-width: 70px;
 }
 
 .playerContent {
+  position: absolute;
+  width: 410px;
+  transform: rotate(-90deg);
+  transform-origin: bottom left;
+  left: 60px;
+  bottom: 10px;
+}
+
+.playerName {
+  font-size: 30px;
+}
+
+.playerStars, .playerRank, .playerScore, .playerBadges {
+  float: left;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.playerStars, .playerRank, .playerScore {
+  margin-right: 10px;
+}
+
+.playerStars span, .playerRank span, .playerScore span, .playerBadges span {
+  font-weight: normal;
+}
+
+.playerDetails {
   display: table-cell;
   width: 1120px;
 }
