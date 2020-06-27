@@ -6,9 +6,8 @@ const app = express();
 app.use(cors());
 app.options('*', cors());
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'))
-})
+app.use(express.static(path.join(__dirname, 'build')))
+app.get('/', (req, res) => { res.sendFile(path.join(__dirname, 'build', 'index.html')) })
 
 app.get('/api/:player', (request, response) => {
 
