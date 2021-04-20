@@ -49,7 +49,7 @@ export function fetchPlayer(name) {
     //   return;
     // }
 
-    return fetch(`/api/${name}`)
+    return fetch(`/api/${name}/winnipeg`)
     .then(response => response.json())
     .then(json => {
       loadPlayerData(dispatch, json);
