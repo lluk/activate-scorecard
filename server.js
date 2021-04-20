@@ -16,7 +16,7 @@ app.get('/api/:player', (request, response) => {
     var https = require('https');
     var options = {
         host: 'scores.activate.ca',
-        path: `/api/player/${player}`
+        path: `/api/player/${player}/Winnipeg`
     };
 
     var req = https.get(options, function(res) {
