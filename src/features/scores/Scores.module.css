@@ -34,7 +34,8 @@
 }
 
 .playerContent {
-  /* position: absolute; */
+  display: table-cell;
+  padding: 10px 5px;
   /* width: 410px; */
   /* transform: rotate(-90deg); */
   /* transform-origin: bottom left; */
@@ -44,11 +45,13 @@
 
 .playerName {
   text-align: left;
-  font-size: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  float: left;
 }
 
 .playerStars, .playerRank, .playerScore, .playerBadges {
-  float: left;
+  float: right;
   font-size: 15px;
   font-weight: bold;
 }
@@ -71,11 +74,13 @@
   border: 1px solid #333;
   border-collapse: collapse;
   font-size: 14px;
+  background-color: #EEE;
   white-space: nowrap;
 }
 
 .games {
   display: table-row;
+  background-color: #FFF;
 }
 
 .game {
