@@ -23,26 +23,27 @@
 
 .scorecard {
   margin: 10px auto;
-  display: table-row;
+  display: table;
   border: 2px solid black;
 }
 
 .playerInfo {
-  display: table-cell;
+  display: table-row;
   position: relative;
   min-width: 70px;
 }
 
 .playerContent {
-  position: absolute;
-  width: 410px;
-  transform: rotate(-90deg);
-  transform-origin: bottom left;
-  left: 60px;
-  bottom: 10px;
+  /* position: absolute; */
+  /* width: 410px; */
+  /* transform: rotate(-90deg); */
+  /* transform-origin: bottom left; */
+  /* left: 60px; */
+  /* bottom: 10px; */
 }
 
 .playerName {
+  text-align: left;
   font-size: 30px;
 }
 
@@ -61,7 +62,7 @@
 }
 
 .playerDetails {
-  display: table-cell;
+  display: table-row;
   width: 1120px;
 }
 

@@ -24,30 +24,31 @@ export function Players() {
 
 export function Player(props) {
 
-  const levels = useSelector(selectLevels);
-  const badges = useSelector(selectBadges);
+  // const levels = useSelector(selectLevels);
+  // const badges = useSelector(selectBadges);
 
   let player = props.player;
   if(player.isLoading){
     return (<div>Loading {player.player_name}</div>);
   }
 
-  let totalStars = getTotalStars(levels, badges);
-  let totalBadges = Object.keys(badges).length;
+  // let totalStars = getTotalStars(levels, badges);
+  // let totalBadges = Object.keys(badges).length;
   return (
       <div className={styles.scorecard}>
         <div className={styles.playerInfo}>
           <div className={styles.playerContent}>
             <div className={styles.playerName}>{player.player_name}</div>
-            <div className={styles.playerStars}><span>Stars:</span> {player.stars} / {totalStars}</div>
-            <div className={styles.playerRank}><span>Rank:</span> {player.rank}</div>
+            <div className={styles.playerRank}><span>Leaderboard:</span> {player.local_rank}</div>
+            <div className={styles.playerRank}><span>Rank:</span> {player.player_rank}</div>
+            <div className={styles.playerStars}><span>Stars:</span> {player.stars}</div>
             <div className={styles.playerScore}><span>Score:</span> {player.total_score}</div>
-            <div className={styles.playerBadges}><span>Badges:</span> {player.badges_count} / {totalBadges}</div>
+            {/* <div className={styles.playerBadges}><span>Badges:</span> {player.badges_count} / {totalBadges}</div> */}
           </div>
         </div>
         <div className={styles.playerDetails}>
           <Scores scores={player.high_scores} />
-          <Badges player_badges={player.badges} />
+          {/* <Badges player_badges={player.badges} /> */}
         </div>
       </div>
     );
